@@ -473,6 +473,8 @@ FFI_STATIC_LIBRARIES-ADVANCED:INTERNAL=1
 FIND_PACKAGE_MESSAGE_DETAILS_CURL:INTERNAL=[/usr/lib/libcurl.so][/usr/include][ ][v8.17.0()]
 //Details about finding FFI
 FIND_PACKAGE_MESSAGE_DETAILS_FFI:INTERNAL=[/usr/lib/libffi.so][1][v()]
+//Details about finding LibEdit
+FIND_PACKAGE_MESSAGE_DETAILS_LibEdit:INTERNAL=[/usr/include][/usr/lib/libedit.so][v2.11()]
 //Details about finding LibXml2
 FIND_PACKAGE_MESSAGE_DETAILS_LibXml2:INTERNAL=[/usr/lib/libxml2.so][/usr/include/libxml2][v2.15.1()]
 //Details about finding Threads
@@ -487,7 +489,7 @@ HAVE_FFI_CALL:INTERNAL=1
 HAVE_FFI_H-ADVANCED:INTERNAL=1
 HAVE_FFI_H:INTERNAL=1
 //Have include histedit.h
-HAVE_HISTEDIT_H:INTERNAL=
+HAVE_HISTEDIT_H:INTERNAL=1
 //ADVANCED property for variable: LIBXML2_INCLUDE_DIR
 LIBXML2_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: LIBXML2_LIBRARY

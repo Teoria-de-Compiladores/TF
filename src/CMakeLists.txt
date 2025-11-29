@@ -25,7 +25,7 @@ message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
 include_directories(${LLVM_INCLUDE_DIRS})
 add_definitions(${LLVM_DEFINITIONS})
 
-# Fuentes generadas por ANTLR (los .cpp están en gen/grammar/src)
+# Fuentes generadas por ANTLR (los .cpp están en ../gen/grammar/src)
 file(GLOB_RECURSE ANTLR_SOURCES
     "${CMAKE_SOURCE_DIR}/../gen/grammar/src/*.cpp"
 )
@@ -33,7 +33,8 @@ file(GLOB_RECURSE ANTLR_SOURCES
 # Fuentes propias
 set(SRC_FILES
     ${CMAKE_SOURCE_DIR}/AudioMain.cpp
-    # AudioDriver.h solo se incluye, no se compila, pero el include path ya lo cubre
+    # AudioDriver.h es solo header, se incluye desde AudioMain.cpp
+    ${CMAKE_SOURCE_DIR}/../runtime/runtime_audio_wav.c   # <-- runtime C
 )
 
 add_executable(audioscorec
@@ -43,7 +44,7 @@ add_executable(audioscorec
 
 target_include_directories(audioscorec PRIVATE
     ${ANTLR4_RUNTIME_INCLUDE_DIR}
-    ${CMAKE_SOURCE_DIR}                  # src/
+    ${CMAKE_SOURCE_DIR}                  # donde están AudioMain.cpp / AudioDriver.h
     ${CMAKE_SOURCE_DIR}/../gen/grammar/src 
     ${LLVM_INCLUDE_DIRS}
 )

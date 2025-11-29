@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <math.h>
+#include <errno.h>
+#include <string.h>
 
 //Este módulo implementa las funciones que el LLVM IR llama para generar realmente un archivo WAV
 #define SAMPLE_RATE 44100
@@ -84,9 +86,18 @@ void fix_wav_header_sizes(FILE *f) {
 //Llamado por el compilador al inicio del programa.
 void init_wav_writer() {
     wavFile = fopen("output.wav", "wb");
+    if (!wavFile) {
+        fprintf(stderr,
+                "[runtime] ERROR: no se pudo abrir output.wav: %s\n",
+                strerror(errno));
+        fflush(stderr);
+        return;
+    }
+
     write_wav_header_empty(wavFile);
     totalSamples = 0;
     printf("[runtime] WAV writer initialized\n");
+    fflush(stdout);
 }
 
 /*
@@ -115,9 +126,17 @@ void write_sine_note(double freqHz, int durationMs) {
 
 //Escribe silencio (sample = 0)
 void write_rest(int durationMs) {
+    if (!wavFile) {
+        fprintf(stderr,
+                "[runtime] ERROR: wavFile NULL en write_rest\n");
+        fflush(stderr);
+        return;
+    }
+
     int samples = (SAMPLE_RATE * durationMs) / 1000;
 
     printf("[runtime] REST for %d ms\n", durationMs);
+    fflush(stdout);
 
     int16_t pcm = 0;
     for (int i = 0; i < samples; i++) {
@@ -128,9 +147,19 @@ void write_rest(int durationMs) {
 }
 
 void finalize_wav() {
+    if (!wavFile) {
+        fprintf(stderr,
+                "[runtime] ERROR: wavFile NULL en finalize_wav\n");
+        fflush(stderr);
+        return;
+    }
+
     printf("[runtime] Finalizing WAV file...\n");
+    fflush(stdout);
 
     fix_wav_header_sizes(wavFile);
     fclose(wavFile);
+    wavFile = NULL;
     printf("[runtime] WAV saved as output.wav\n");
+    fflush(stdout);
 }

@@ -154,7 +154,11 @@ CMakeFiles/audioscorec.dir/AudioMain.cpp.o: \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc /usr/include/c++/15.2.1/sstream \
- /usr/include/c++/15.2.1/bits/sstream.tcc \
+ /usr/include/c++/15.2.1/bits/sstream.tcc /usr/include/c++/15.2.1/vector \
+ /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
+ /usr/include/c++/15.2.1/bits/stl_vector.h \
+ /usr/include/c++/15.2.1/bits/stl_bvector.h \
+ /usr/include/c++/15.2.1/bits/vector.tcc \
  /usr/include/antlr4-runtime/antlr4-runtime.h \
  /usr/include/antlr4-runtime/antlr4-common.h \
  /usr/include/c++/15.2.1/algorithm \
@@ -198,7 +202,6 @@ CMakeFiles/audioscorec.dir/AudioMain.cpp.o: \
  /usr/include/c++/15.2.1/bits/stl_map.h \
  /usr/include/c++/15.2.1/bits/stl_multimap.h \
  /usr/include/c++/15.2.1/bits/erase_if.h /usr/include/c++/15.2.1/memory \
- /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
  /usr/include/c++/15.2.1/bits/stl_raw_storage_iter.h \
  /usr/include/c++/15.2.1/bits/align.h \
  /usr/include/c++/15.2.1/bits/unique_ptr.h \
@@ -224,10 +227,7 @@ CMakeFiles/audioscorec.dir/AudioMain.cpp.o: \
  /usr/include/c++/15.2.1/unordered_set \
  /usr/include/c++/15.2.1/bits/unordered_set.h \
  /usr/include/c++/15.2.1/utility \
- /usr/include/c++/15.2.1/bits/stl_relops.h /usr/include/c++/15.2.1/vector \
- /usr/include/c++/15.2.1/bits/stl_vector.h \
- /usr/include/c++/15.2.1/bits/stl_bvector.h \
- /usr/include/c++/15.2.1/bits/vector.tcc \
+ /usr/include/c++/15.2.1/bits/stl_relops.h \
  /usr/include/antlr4-runtime/support/Declarations.h \
  /usr/include/antlr4-runtime/ANTLRErrorListener.h \
  /usr/include/antlr4-runtime/RecognitionException.h \
@@ -531,4 +531,115 @@ CMakeFiles/audioscorec.dir/AudioMain.cpp.o: \
  /usr/include/llvm-c/Visibility.h /usr/include/llvm/Support/Debug.h \
  /usr/include/llvm/Support/ErrorOr.h /usr/include/llvm/Support/Format.h \
  /usr/include/llvm/Support/FileSystem/UniqueID.h \
- /usr/include/llvm/Support/MD5.h /usr/include/llvm/Support/Endian.h
+ /usr/include/llvm/Support/MD5.h /usr/include/llvm/Support/Endian.h \
+ /usr/include/llvm/Passes/PassBuilder.h \
+ /usr/include/llvm/Analysis/CGSCCPassManager.h \
+ /usr/include/llvm/Analysis/LazyCallGraph.h /usr/include/llvm/ADT/Any.h \
+ /usr/include/llvm/ADT/SetVector.h \
+ /usr/include/llvm/Analysis/TargetLibraryInfo.h /usr/include/llvm/Pass.h \
+ /usr/include/llvm/PassAnalysisSupport.h /usr/include/llvm/PassSupport.h \
+ /usr/include/llvm/PassInfo.h /usr/include/llvm/PassRegistry.h \
+ /usr/include/llvm/Support/RWMutex.h \
+ /usr/include/llvm/Support/Threading.h /usr/include/llvm/ADT/BitVector.h \
+ /usr/include/llvm/Analysis/TargetLibraryInfo.def \
+ /usr/include/llvm/Support/Allocator.h \
+ /usr/include/llvm/CodeGen/MachinePassManager.h \
+ /usr/include/llvm/ADT/FunctionExtras.h \
+ /usr/include/llvm/CodeGen/MachineFunction.h \
+ /usr/include/llvm/CodeGen/MachineBasicBlock.h \
+ /usr/include/llvm/ADT/SparseBitVector.h \
+ /usr/include/llvm/CodeGen/MachineFunctionAnalysisManager.h \
+ /usr/include/llvm/CodeGen/MachineInstr.h \
+ /usr/include/llvm/ADT/PointerSumType.h \
+ /usr/include/llvm/Analysis/MemoryLocation.h \
+ /usr/include/llvm/CodeGen/MachineMemOperand.h \
+ /usr/include/llvm/CodeGen/PseudoSourceValue.h \
+ /usr/include/llvm/CodeGenTypes/LowLevelType.h \
+ /usr/include/llvm/CodeGenTypes/MachineValueType.h \
+ /usr/include/llvm/CodeGen/GenVT.inc \
+ /usr/include/llvm/CodeGen/MachineOperand.h \
+ /usr/include/llvm/CodeGen/Register.h /usr/include/llvm/MC/MCRegister.h \
+ /usr/include/llvm/CodeGen/TargetOpcodes.h \
+ /usr/include/llvm/Support/TargetOpcodes.def \
+ /usr/include/llvm/IR/InlineAsm.h /usr/include/llvm/MC/MCInstrDesc.h \
+ /usr/include/llvm/MC/MCSymbol.h /usr/include/llvm/MC/MCExpr.h \
+ /usr/include/llvm/Support/SMLoc.h /usr/include/llvm/MC/MCSection.h \
+ /usr/include/llvm/MC/MCFixup.h /usr/include/llvm/MC/MCInst.h \
+ /usr/include/llvm/MC/SectionKind.h \
+ /usr/include/llvm/MC/MCSymbolTableEntry.h \
+ /usr/include/llvm/Support/ArrayRecycler.h \
+ /usr/include/llvm/CodeGen/MachineInstrBundleIterator.h \
+ /usr/include/llvm/MC/LaneBitmask.h /usr/include/llvm/Support/Printable.h \
+ /usr/include/llvm/Support/BranchProbability.h \
+ /usr/include/c++/15.2.1/numeric \
+ /usr/include/c++/15.2.1/bits/stl_numeric.h \
+ /usr/include/c++/15.2.1/pstl/glue_numeric_defs.h \
+ /usr/include/llvm/Support/UniqueBBID.h \
+ /usr/include/llvm/IR/EHPersonalities.h \
+ /usr/include/llvm/Support/Recycler.h \
+ /usr/include/llvm/Target/TargetOptions.h \
+ /usr/include/llvm/MC/MCTargetOptions.h \
+ /usr/include/llvm/Support/Compression.h /usr/include/c++/15.2.1/variant \
+ /usr/include/llvm/CodeGen/RegAllocCommon.h \
+ /usr/include/llvm/Passes/OptimizationLevel.h \
+ /usr/include/llvm/Support/PGOOptions.h \
+ /usr/include/llvm/ADT/IntrusiveRefCntPtr.h \
+ /usr/include/llvm/Transforms/IPO/Inliner.h \
+ /usr/include/llvm/Analysis/InlineAdvisor.h \
+ /usr/include/llvm/Analysis/InlineCost.h \
+ /usr/include/llvm/Analysis/InlineModelFeatureMaps.h \
+ /usr/include/llvm/Analysis/TensorSpec.h \
+ /usr/include/llvm/Analysis/Utils/ImportedFunctionsInliningStatistics.h \
+ /usr/include/llvm/Transforms/IPO/ModuleInliner.h \
+ /usr/include/llvm/Transforms/Scalar/LoopPassManager.h \
+ /usr/include/llvm/ADT/PriorityWorklist.h \
+ /usr/include/llvm/Analysis/LoopAnalysisManager.h \
+ /usr/include/llvm/Analysis/LoopInfo.h \
+ /usr/include/llvm/Support/GenericLoopInfoImpl.h \
+ /usr/include/llvm/ADT/DepthFirstIterator.h \
+ /usr/include/llvm/ADT/PostOrderIterator.h \
+ /usr/include/llvm/ADT/SetOperations.h \
+ /usr/include/llvm/Support/GenericLoopInfo.h \
+ /usr/include/llvm/Support/GenericDomTree.h \
+ /usr/include/llvm/Support/CFGDiff.h \
+ /usr/include/llvm/Support/CFGUpdate.h \
+ /usr/include/llvm/Analysis/LoopNestAnalysis.h \
+ /usr/include/llvm/IR/PassInstrumentation.h \
+ /usr/include/llvm/Transforms/Utils/LCSSA.h \
+ /usr/include/llvm/Transforms/Utils/LoopSimplify.h \
+ /usr/include/llvm/Transforms/Utils/LoopUtils.h \
+ /usr/include/llvm/Analysis/IVDescriptors.h \
+ /usr/include/llvm/IR/IntrinsicInst.h \
+ /usr/include/llvm/IR/DebugInfoMetadata.h \
+ /usr/include/llvm/IR/PseudoProbe.h \
+ /usr/include/llvm/Support/CommandLine.h \
+ /usr/include/llvm/Support/StringSaver.h \
+ /usr/include/llvm/Support/Discriminator.h \
+ /usr/include/llvm/IR/DebugInfoFlags.def \
+ /usr/include/llvm/Analysis/LoopAccessAnalysis.h \
+ /usr/include/llvm/ADT/EquivalenceClasses.h \
+ /usr/include/llvm/Analysis/ScalarEvolution.h \
+ /usr/include/llvm/ADT/FoldingSet.h /usr/include/llvm/Support/xxhash.h \
+ /usr/include/llvm/IR/ValueMap.h /usr/include/llvm/Support/Mutex.h \
+ /usr/include/llvm/IR/DiagnosticInfo.h \
+ /usr/include/llvm/Support/SourceMgr.h \
+ /usr/include/llvm/Support/MemoryBuffer.h \
+ /usr/include/llvm/Support/MemoryBufferRef.h \
+ /usr/include/llvm/Analysis/TargetTransformInfo.h \
+ /usr/include/llvm/Support/InstructionCost.h \
+ /usr/include/llvm/Transforms/Utils/ValueMapper.h \
+ /usr/include/llvm/ExecutionEngine/ExecutionEngine.h \
+ /usr/include/llvm-c/ExecutionEngine.h /usr/include/llvm-c/Target.h \
+ /usr/include/llvm/Config/Targets.def \
+ /usr/include/llvm/Config/AsmPrinters.def \
+ /usr/include/llvm/Config/AsmParsers.def \
+ /usr/include/llvm/Config/Disassemblers.def \
+ /usr/include/llvm-c/TargetMachine.h \
+ /usr/include/llvm/ExecutionEngine/JITSymbol.h \
+ /usr/include/llvm/Object/Binary.h /usr/include/llvm/Object/Error.h \
+ /usr/include/llvm/Target/TargetMachine.h \
+ /usr/include/llvm/Target/CGPassBuilderOption.h \
+ /usr/include/llvm/ExecutionEngine/GenericValue.h \
+ /usr/include/llvm/Support/TargetSelect.h \
+ /usr/include/llvm/Config/TargetMCAs.def \
+ /usr/include/llvm/Support/DynamicLibrary.h

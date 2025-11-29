@@ -5,12 +5,11 @@
 #include <stdexcept>
 #include <cmath>
 #include <system_error>
-
+#include <memory>
+#include <iostream>
 #include "antlr4-runtime.h"
 #include "AudioScoreBaseVisitor.h"
 #include "AudioScoreParser.h"
-
-// LLVM
 #include "llvm/IR/BasicBlock.h"
 #include "llvm/IR/Constants.h"
 #include "llvm/IR/DerivedTypes.h"
@@ -22,14 +21,16 @@
 #include "llvm/IR/Verifier.h"
 #include "llvm/Support/FileSystem.h"
 #include "llvm/Support/raw_ostream.h"
+#include "llvm/IR/PassManager.h"
+#include "llvm/Passes/PassBuilder.h"
+#include "llvm/Passes/OptimizationLevel.h"
 
 class AudioDriver : public AudioScoreBaseVisitor {
 public:
-    explicit AudioDriver(const std::string &outputLl)
+    AudioDriver()
         : tempoBpm_(120),
           module_(std::make_unique<llvm::Module>("AudioScoreModule", context_)),
           builder_(std::make_unique<llvm::IRBuilder<>>(context_)),
-          outputFilename_(outputLl),
           initFn_(nullptr),
           finalFn_(nullptr),
           noteFn_(nullptr),
@@ -41,9 +42,9 @@ public:
         using namespace llvm;
 
         // 1. Declarar tipos básicos
-        llvm::Type *voidTy   = builder_->getVoidTy();
-        llvm::Type *doubleTy = builder_->getDoubleTy();
-        llvm::Type *i32Ty    = builder_->getInt32Ty();
+        Type *voidTy   = builder_->getVoidTy();
+        Type *doubleTy = builder_->getDoubleTy();
+        Type *i32Ty    = builder_->getInt32Ty();
 
         // 2. Declarar funciones externas del runtime (runtime_audio_wav.c)
         FunctionType *initTy  = FunctionType::get(voidTy, false);
@@ -92,16 +93,6 @@ public:
             llvm::errs() << "Error: módulo LLVM inválido\n";
         }
 
-        // 8. Volcar el IR a archivo .ll
-        std::error_code EC;
-        llvm::raw_fd_ostream dest(outputFilename_, EC, llvm::sys::fs::OF_Text);
-        if (EC) {
-            llvm::errs() << "No se pudo abrir archivo " << outputFilename_
-                         << ": " << EC.message() << "\n";
-        } else {
-            module_->print(dest, nullptr);
-        }
-
         return nullptr;
     }
 
@@ -129,8 +120,8 @@ public:
         int ms = durationToMs(durText, tempoBpm_);
 
         // Crear constantes LLVM y llamar a write_sine_note(freq, ms)
-        llvm::Type *doubleTy = builder_->getDoubleTy();
-        llvm::Type *i32Ty    = builder_->getInt32Ty();
+        Type *doubleTy = builder_->getDoubleTy();
+        Type *i32Ty    = builder_->getInt32Ty();
 
         Value *freqVal = ConstantFP::get(doubleTy, freqHz);
         Value *durVal  = ConstantInt::get(i32Ty, ms);
@@ -147,11 +138,62 @@ public:
         std::string durText = ctx->DUR()->getText();
         int ms = durationToMs(durText, tempoBpm_);
 
-        llvm::Type *i32Ty = builder_->getInt32Ty();
+        Type *i32Ty = builder_->getInt32Ty();
         Value *durVal = ConstantInt::get(i32Ty, ms);
 
         builder_->CreateCall(restFn_, {durVal});
         return nullptr;
+    }
+
+    // ====== API para main ======
+
+    llvm::LLVMContext &getContext() { return context_; }
+
+    // Para JIT: transferimos ownership del módulo al main
+    std::unique_ptr<llvm::Module> takeModule() {
+        return std::move(module_);
+    }
+
+    // Escribe el IR actual (sin o con optimización, según cuándo se llame)
+    void writeIR(const std::string &path) {
+        std::error_code EC;
+        llvm::raw_fd_ostream out(path, EC, llvm::sys::fs::OF_None);
+        if (EC) {
+            llvm::errs() << "Error creando " << path
+                         << ": " << EC.message() << "\n";
+            return;
+        }
+        module_->print(out, nullptr);
+    }
+
+    // Aplica O2 sobre el módulo, y luego lo escribe (como en CalcDriver)
+    void optimizeAndWrite(const std::string &outPath) {
+        using namespace llvm;
+
+        PassBuilder PB;
+
+        LoopAnalysisManager LAM;
+        FunctionAnalysisManager FAM;
+        CGSCCAnalysisManager CGAM;
+        ModuleAnalysisManager MAM;
+
+        PB.registerModuleAnalyses(MAM);
+        PB.registerFunctionAnalyses(FAM);
+        PB.registerCGSCCAnalyses(CGAM);
+        PB.registerLoopAnalyses(LAM);
+        PB.crossRegisterProxies(LAM, FAM, CGAM, MAM);
+
+        OptimizationLevel OL = OptimizationLevel::O2;
+        ModulePassManager MPM = PB.buildPerModuleDefaultPipeline(OL);
+
+        MPM.run(*module_, MAM);
+
+        if (verifyModule(*module_, &errs())) {
+            errs() << "Error: módulo inválido tras optimización\n";
+            return;
+        }
+
+        writeIR(outPath);
     }
 
 private:
@@ -161,7 +203,6 @@ private:
     llvm::LLVMContext context_;
     std::unique_ptr<llvm::Module> module_;
     std::unique_ptr<llvm::IRBuilder<>> builder_;
-    std::string outputFilename_;
 
     llvm::Function *initFn_;
     llvm::Function *finalFn_;

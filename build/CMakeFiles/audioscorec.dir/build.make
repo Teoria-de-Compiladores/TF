@@ -86,10 +86,24 @@ CMakeFiles/audioscorec.dir/AudioMain.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/audioscorec.dir/AudioMain.cpp.s"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/ct/AudioScoreLang/src/AudioMain.cpp -o CMakeFiles/audioscorec.dir/AudioMain.cpp.s
 
+CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o: CMakeFiles/audioscorec.dir/flags.make
+CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o: /mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c
+CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o: CMakeFiles/audioscorec.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o"
+	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o -MF CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o.d -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o -c /mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c
+
+CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.i"
+	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c > CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.i
+
+CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.s"
+	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.s
+
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o: CMakeFiles/audioscorec.dir/flags.make
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o: /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o: CMakeFiles/audioscorec.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o -MF CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o.d -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp
 
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.i: cmake_force
@@ -103,7 +117,7 @@ CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBas
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o: CMakeFiles/audioscorec.dir/flags.make
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o: /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o: CMakeFiles/audioscorec.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o -MF CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o.d -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp
 
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.i: cmake_force
@@ -117,7 +131,7 @@ CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBas
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o: CMakeFiles/audioscorec.dir/flags.make
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o: /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o: CMakeFiles/audioscorec.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o -MF CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o.d -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp
 
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.i: cmake_force
@@ -131,7 +145,7 @@ CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLex
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o: CMakeFiles/audioscorec.dir/flags.make
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o: /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o: CMakeFiles/audioscorec.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o -MF CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o.d -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp
 
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.i: cmake_force
@@ -145,7 +159,7 @@ CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLis
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o: CMakeFiles/audioscorec.dir/flags.make
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o: /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o: CMakeFiles/audioscorec.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o -MF CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o.d -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp
 
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.i: cmake_force
@@ -159,7 +173,7 @@ CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScorePar
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o: CMakeFiles/audioscorec.dir/flags.make
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o: /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o: CMakeFiles/audioscorec.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o -MF CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o.d -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp
 
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.i: cmake_force
@@ -173,6 +187,7 @@ CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVis
 # Object files for target audioscorec
 audioscorec_OBJECTS = \
 "CMakeFiles/audioscorec.dir/AudioMain.cpp.o" \
+"CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o" \
 "CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o" \
 "CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o" \
 "CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o" \
@@ -184,6 +199,7 @@ audioscorec_OBJECTS = \
 audioscorec_EXTERNAL_OBJECTS =
 
 audioscorec: CMakeFiles/audioscorec.dir/AudioMain.cpp.o
+audioscorec: CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o
 audioscorec: CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o
 audioscorec: CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o
 audioscorec: CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o
@@ -194,7 +210,7 @@ audioscorec: CMakeFiles/audioscorec.dir/build.make
 audioscorec: CMakeFiles/audioscorec.dir/compiler_depend.ts
 audioscorec: /usr/lib/libLLVM.so.21.1
 audioscorec: CMakeFiles/audioscorec.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable audioscorec"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/ct/AudioScoreLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable audioscorec"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/audioscorec.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -3,6 +3,7 @@ audioscorec: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
   CMakeFiles/audioscorec.dir/AudioMain.cpp.o \
+  CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o \
   CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o \
   CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o \
   CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o \
@@ -54,6 +55,8 @@ audioscorec: \
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o:
 
 CMakeFiles/audioscorec.dir/AudioMain.cpp.o:
+
+CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o:
 
 CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o:
 

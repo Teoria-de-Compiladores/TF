@@ -362,6 +362,30 @@ mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/audioscorec.dir/build.make CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.s
 .PHONY : mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.s
 
+mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.o: mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o
+.PHONY : mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.o
+
+# target to build an object file
+mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/audioscorec.dir/build.make CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o
+.PHONY : mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o
+
+mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.i: mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.i
+.PHONY : mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.i
+
+# target to preprocess a source file
+mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/audioscorec.dir/build.make CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.i
+.PHONY : mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.i
+
+mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.s: mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.s
+.PHONY : mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.s
+
+# target to generate assembly for a file
+mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/audioscorec.dir/build.make CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.s
+.PHONY : mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -397,6 +421,9 @@ help:
 	@echo "... mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.o"
 	@echo "... mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.i"
 	@echo "... mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.s"
+	@echo "... mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.o"
+	@echo "... mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.i"
+	@echo "... mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.s"
 .PHONY : help
 
 
