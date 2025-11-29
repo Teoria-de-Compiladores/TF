@@ -52,6 +52,7 @@ public:
         FunctionType *noteTy  = FunctionType::get(voidTy, {doubleTy, i32Ty}, false);
         FunctionType *restTy  = FunctionType::get(voidTy, {i32Ty}, false);
 
+        //ExternalLinkage: LLVM asume que las implementaciones vendrán de fuera (el runtime en C).
         initFn_ = Function::Create(
             initTy, Function::ExternalLinkage, "init_wav_writer", module_.get());
         finalFn_ = Function::Create(
@@ -61,7 +62,7 @@ public:
         restFn_ = Function::Create(
             restTy, Function::ExternalLinkage, "write_rest", module_.get());
 
-        // 3. Definir: i32 @main()
+        // 3. Definir: i32 @main(): basic block entry
         FunctionType *mainTy = FunctionType::get(i32Ty, false);
         mainFn_ = Function::Create(
             mainTy, Function::ExternalLinkage, "main", module_.get());
@@ -74,6 +75,7 @@ public:
         builder_->CreateCall(initFn_);
 
         // 5. Visitar tempo (si existe) y statements
+        // tempoDecl : ejm Si el usuario escribió tempo 90; se ejecuta visitTempoDecl.
         if (ctx->tempoDecl()) {
             visit(ctx->tempoDecl());
         }
@@ -86,6 +88,7 @@ public:
         builder_->CreateRet(llvm::ConstantInt::get(i32Ty, 0));
 
         // 7. Verificación
+        //Usa el verificador de LLVM para detectar inconsistencias
         if (verifyFunction(*mainFn_, &llvm::errs())) {
             llvm::errs() << "Error: función main inválida\n";
         }
@@ -97,6 +100,8 @@ public:
     }
 
     // tempoDecl: 'tempo' INT ';'
+    //Convierte el token INT a entero
+    //Actualiza tempoBpm_ : se usará al calcular las duraciones.
     antlrcpp::Any visitTempoDecl(AudioScoreParser::TempoDeclContext *ctx) override {
         int bpm = std::stoi(ctx->INT()->getText());
         tempoBpm_ = bpm;
@@ -104,6 +109,7 @@ public:
     }
 
     // noteStmt: NOTE OCTAVE DUR ;
+    //Extrae los 3 tokens de la nota
     antlrcpp::Any visitNoteStmt(AudioScoreParser::NoteStmtContext *ctx) override {
         using namespace llvm;
 
@@ -111,12 +117,15 @@ public:
         std::string octaveText = ctx->OCTAVE()->getText(); // "4"
         std::string durText    = ctx->DUR()->getText();    // "q", "h", "e"
 
-        int midi = noteToMidi(noteText, octaveText);
+        int midi = noteToMidi(noteText, octaveText); //Convierte nota+octava a número MIDI.
 
         // MIDI -> frecuencia en Hz (A4 = 440Hz, MIDI 69)
+        //Fórmula estándar: a partir de A4 (MIDI 69, 440 Hz) calculas la frecuencia:
+        //440*2^((midi - 69) / 12.0)
         double semitonesFromA4 = static_cast<double>(midi - 69) / 12.0;
         double freqHz = 440.0 * std::pow(2.0, semitonesFromA4);
 
+        //Duración simbólica (q, h, e) + tempo (tempoBpm_) : milisegundos.
         int ms = durationToMs(durText, tempoBpm_);
 
         // Crear constantes LLVM y llamar a write_sine_note(freq, ms)
@@ -132,6 +141,7 @@ public:
     }
 
     // restStmt: 'rest' DUR ;
+    //calula la duracion
     antlrcpp::Any visitRestStmt(AudioScoreParser::RestStmtContext *ctx) override {
         using namespace llvm;
 
@@ -149,12 +159,13 @@ public:
 
     llvm::LLVMContext &getContext() { return context_; }
 
-    // Para JIT: transferimos ownership del módulo al main
+    // Para JIT: se tranfiere ownership del módulo al main
     std::unique_ptr<llvm::Module> takeModule() {
         return std::move(module_);
     }
 
     // Escribe el IR actual (sin o con optimización, según cuándo se llame)
+    // Es lo que produce sinopt.ll o optimized.ll.
     void writeIR(const std::string &path) {
         std::error_code EC;
         llvm::raw_fd_ostream out(path, EC, llvm::sys::fs::OF_None);
@@ -229,6 +240,9 @@ private:
         int semitone = it->second;
         int octave = std::stoi(octaveStr);
         // MIDI: C4 = 60 -> 12*(octave+1) + semitone
+        //60: do central
+        //MIDI te permite representar notas de forma simbólica
+        //Y luego convertirlas matemáticamente a Hz (onda sinusoidal real)
         int midi = 12 * (octave + 1) + semitone;
         return midi;
     }
@@ -237,14 +251,19 @@ private:
         // Negra en ms
         double quarterMs = 60000.0 / tempoBpm;
 
-        if (dur == "q") {         // negra
+        if (dur == "q") {         // negra(estándar: duración base)
             return static_cast<int>(quarterMs);
-        } else if (dur == "h") {  // blanca
+        } else if (dur == "h") {  // blanca(larga: 2 × negra)
             return static_cast<int>(2 * quarterMs);
-        } else if (dur == "e") {  // corchea
+        } else if (dur == "e") {  // corchea(corta:1/2 negra)
             return static_cast<int>(quarterMs / 2.0);
         } else {
             throw std::runtime_error("Duración desconocida: " + dur);
         }
+        //calcula la duración de la negra según el TEMPO
+        //Ejemplo si tempo = 90 BPM:
+        //negra q = 60000/90 = 666 ms
+        //corchea e = 333 ms
+        //blanca h = 1333 ms
     }
 };

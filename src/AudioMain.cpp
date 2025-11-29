@@ -54,7 +54,7 @@ void runWithJIT(std::unique_ptr<Module> M) {
         EE->addGlobalMapping(F, (void*)&write_rest);
     }
 
-    // Ahora sí, buscar y ejecutar main()
+    //buscar y ejecutar main()
     Function *MainFunc = EE->FindFunctionNamed("main");
     if (!MainFunc) {
         errs() << "No se encontró la función main para ejecutar con JIT\n";
@@ -107,24 +107,24 @@ int main(int argc, const char* argv[]) {
 
     tree::ParseTree *tree = parser.program();
 
-    // 1) Construimos el módulo LLVM con el driver
+    // 1) se construye el módulo LLVM con el driver
     AudioDriver driver;
     driver.visit(tree);
 
-    // 2) Siempre guardamos una versión "sinopt.ll" (como en Calc)
+    // 2) Siempre se guardara una versión "sinopt.ll" 
     driver.writeIR("sinopt.ll");
 
-    // 3) Si hay -O, optimizamos y escribimos "optimized.ll"
+    // 3) Si hay -O, optimizacion y se escribe "optimized.ll"
     if (optimize) {
         std::cout << "[info] Ejecutando optimización O2...\n";
         driver.optimizeAndWrite("optimized.ll");
         std::cout << "[info] IR optimizado escrito en optimized.ll\n";
     }
 
-    // 4) Si hay -jit, ejecutamos el módulo (optimizado o no)
+    // 4) Si hay -jit, se ejecuta el módulo (optimizado o no)
     if (useJIT) {
         std::cout << "[info] Ejecutando módulo con JIT...\n";
-        auto M = driver.takeModule();   // movemos el módulo al JIT
+        auto M = driver.takeModule();
         runWithJIT(std::move(M));
         std::cout << "[info] Ejecución JIT terminada.\n";
         std::cout << "[info] Deberías ver output.wav en el directorio actual.\n";
