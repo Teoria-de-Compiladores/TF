@@ -99,3 +99,11 @@ genera sinopt.ll y ejecuta el JIT, creando output.wav.
 
 ./audioscorec song_estrellita.aud -O -jit
 aplica O2, escribe optimized.ll y JIT ejecuta la versión optimizada.
+
+--------------------
+PARA VER TODO EL IR (con el runtime)
+# 1) Generar IR del runtime
+clang -c ../runtime/runtime_audio_wav.c -S -emit-llvm -O2 -o runtime.ll
+
+# 2) Unir sinopt.ll + runtime.ll en un solo módulo textual
+llvm-link sinopt.ll runtime.ll -S -o full.ll
