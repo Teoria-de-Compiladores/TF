@@ -1,24 +1,3 @@
-AudioScoreLang/
-├── grammar/
-│   └── AudioScore.g4
-├── gen/                 # aquí ANTLR generará los .h/.cpp del parser/lexer
-├── src/
-│   ├── AudioIR.h        # definición de la IR musical (SongIR, Event, etc.)
-│   ├── AudioIRBuilder.h # visitor que convierte AST → IR musical
-│   ├── AudioIRBuilder.cpp
-│   ├── CodeGenLLVM.h    # genera el archivo .ll (LLVM IR en texto)
-│   ├── CodeGenLLVM.cpp
-│   └── main.cpp         # punto de entrada: usa ANTLR, builder y codegen
-├── runtime/
-│   └── runtime_audio.c  # implementación de init_audio, play_note, etc.
-└── build/               # donde dejarás compilados, .ll, ejecutable, etc.
-
-mkdir -p tools
-cd tools
-wget https://www.antlr.org/download/antlr-4.13.1-complete.jar
-ls
-
-----------
 1. Generar ANTLR
 mkdir -p gen/grammar
 
@@ -99,3 +78,24 @@ clang song.ll ../runtime/runtime_audio_wav.c -lm -o song_exe
 
 # 4. Ejecutar y generar output.wav
 ./song_exe
+
+----------------
+CON JIT Y OPTIMIZACION
+rm -rf build
+mkdir build
+cd build
+
+cmake ../src
+cmake --build . -j4
+
+./audioscorec song_estrellita.aud
+genera sólo sinopt.ll.
+
+./audioscorec song_estrellita.aud -O
+genera sinopt.ll + optimized.ll.
+
+./audioscorec song_estrellita.aud -jit
+genera sinopt.ll y ejecuta el JIT, creando output.wav.
+
+./audioscorec song_estrellita.aud -O -jit
+aplica O2, escribe optimized.ll y JIT ejecuta la versión optimizada.
