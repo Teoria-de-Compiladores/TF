@@ -1,0 +1,11 @@
+T__0=1
+T__1=2
+T__2=3
+NOTE=4
+OCTAVE=5
+DUR=6
+INT=7
+WS=8
+'tempo'=1
+';'=2
+'rest'=3
