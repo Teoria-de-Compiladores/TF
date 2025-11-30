@@ -1,5 +1,4 @@
 #pragma once
-
 #include <string>
 #include <unordered_map>
 #include <stdexcept>
@@ -47,7 +46,8 @@ public:
         Type *i32Ty    = builder_->getInt32Ty();
 
         // 2. Declarar funciones externas del runtime (runtime_audio_wav.c)
-        FunctionType *initTy  = FunctionType::get(voidTy, false);
+        Type *charPtrTy = PointerType::get(context_, 0);
+        FunctionType *initTy = FunctionType::get(voidTy, {charPtrTy}, false);
         FunctionType *finalTy = FunctionType::get(voidTy, false);
         FunctionType *noteTy  = FunctionType::get(voidTy, {doubleTy, i32Ty}, false);
         FunctionType *restTy  = FunctionType::get(voidTy, {i32Ty}, false);
@@ -72,7 +72,9 @@ public:
         builder_->SetInsertPoint(entryBB);
 
         // 4. init_wav_writer();
-        builder_->CreateCall(initFn_);
+        auto *globalStr = builder_->CreateGlobalString("output.wav", "wavName");
+        Value *wavName  = builder_->CreateBitCast(globalStr, charPtrTy);
+        builder_->CreateCall(initFn_, {wavName});
 
         // 5. Visitar tempo (si existe) y statements
         // tempoDecl : ejm Si el usuario escribió tempo 90; se ejecuta visitTempoDecl.

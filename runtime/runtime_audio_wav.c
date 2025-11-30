@@ -84,19 +84,22 @@ void fix_wav_header_sizes(FILE *f) {
 
 //Abre el archivo WAV y escribe un header provisional.
 //Llamado por el compilador al inicio del programa.
-void init_wav_writer() {
-    wavFile = fopen("output.wav", "wb");
+void init_wav_writer(const char *filename) {
+    const char *envName = getenv("AUDIO_OUTPUT_NAME");
+    const char *finalName = envName ? envName : filename;
+
+    wavFile = fopen(finalName, "wb");
     if (!wavFile) {
         fprintf(stderr,
-                "[runtime] ERROR: no se pudo abrir output.wav: %s\n",
-                strerror(errno));
+            "[runtime] ERROR: no se pudo abrir %s: %s\n",
+            finalName, strerror(errno));
         fflush(stderr);
         return;
     }
 
     write_wav_header_empty(wavFile);
     totalSamples = 0;
-    printf("[runtime] WAV writer initialized\n");
+    printf("[runtime] WAV saved as %s\n", finalName);
     fflush(stdout);
 }
 

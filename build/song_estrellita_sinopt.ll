@@ -1,7 +1,9 @@
 ; ModuleID = 'AudioScoreModule'
 source_filename = "AudioScoreModule"
 
-declare void @init_wav_writer()
+@wavName = private unnamed_addr constant [11 x i8] c"output.wav\00", align 1
+
+declare void @init_wav_writer(ptr)
 
 declare void @finalize_wav()
 
@@ -11,7 +13,7 @@ declare void @write_rest(i32)
 
 define i32 @main() {
 entry:
-  call void @init_wav_writer()
+  call void @init_wav_writer(ptr @wavName)
   call void @write_sine_note(double 0x40705A0250C2B956, i32 600)
   call void @write_sine_note(double 0x40705A0250C2B956, i32 600)
   call void @write_sine_note(double 0x40787FED4E47ADFF, i32 600)

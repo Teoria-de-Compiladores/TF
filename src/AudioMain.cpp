@@ -65,6 +65,14 @@ void runWithJIT(std::unique_ptr<Module> M) {
     EE->runFunction(MainFunc, NoArgs);
 }
 
+std::string getBaseName(const std::string &path) {
+    size_t slash = path.find_last_of("/\\");
+    std::string file = (slash == std::string::npos) ? path : path.substr(slash + 1);
+
+    size_t dot = file.find_last_of('.');
+    return (dot == std::string::npos) ? file : file.substr(0, dot);
+}
+
 int main(int argc, const char* argv[]) {
     if (argc < 2) {
         std::cerr << "Uso: " << argv[0]
@@ -111,23 +119,31 @@ int main(int argc, const char* argv[]) {
     AudioDriver driver;
     driver.visit(tree);
 
-    // 2) Siempre se guardara una versión "sinopt.ll" 
-    driver.writeIR("sinopt.ll");
+    std::string baseName = getBaseName(inputFile);
+    std::string wavName = baseName + ".wav";
 
-    // 3) Si hay -O, optimizacion y se escribe "optimized.ll"
+    std::string sinoptFile = baseName + "_sinopt.ll";
+    std::string optFile    = baseName + "_opt.ll";
+
+    // 2) Siempre se guardara una versión "sinopt.ll" 
+    driver.writeIR(sinoptFile);
+    std::cout << "[info] IR sin optimizar escrito en " << sinoptFile << "\n";
+
+    // 3) Si hay -O, optimizamos y escribimos el optimizado
     if (optimize) {
         std::cout << "[info] Ejecutando optimización O2...\n";
-        driver.optimizeAndWrite("optimized.ll");
-        std::cout << "[info] IR optimizado escrito en optimized.ll\n";
+        driver.optimizeAndWrite(optFile);
+        std::cout << "[info] IR optimizado escrito en " << optFile << "\n";
     }
 
-    // 4) Si hay -jit, se ejecuta el módulo (optimizado o no)
+    // 4) Si hay -jit, ejecutamos el módulo (optimizado o no)
     if (useJIT) {
+        setenv("AUDIO_OUTPUT_NAME", wavName.c_str(), 1);
         std::cout << "[info] Ejecutando módulo con JIT...\n";
         auto M = driver.takeModule();
         runWithJIT(std::move(M));
         std::cout << "[info] Ejecución JIT terminada.\n";
-        std::cout << "[info] Deberías ver output.wav en el directorio actual.\n";
+        std::cout << "[info] Deberías ver " << wavName << " en el directorio actual.\n";
     }
 
     return 0;
