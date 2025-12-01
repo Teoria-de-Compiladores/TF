@@ -6,6 +6,55 @@ java -jar tools/antlr-4.13.1-complete.jar \
   -o gen/grammar \
   src/AudioScore.g4
 
+Ver Arbol sintactico
+mkdir -p debug_tree
+cd debug_tree
+cp ../src/AudioScore.g4 .
+
+En terminal de windows
+java -jar ..\tools\antlr-4.13.1-complete.jar AudioScore.g4
+javac -cp .;..\tools\antlr-4.13.1-complete.jar *.java
+
+cat > song_estrellita.aud << 'EOF'
+tempo 100;
+C4 q;
+C4 q;
+G4 q;
+G4 q;
+A4 q;
+A4 q;
+G4 h;
+EOF
+
+cat > song_demo.aud << 'EOF'
+tempo 120;
+
+C4 q;
+D4 e;
+E4 e;
+rest e;
+
+F4 q;
+rest q;
+
+G4 h;
+rest e;
+A4 e;
+
+C5 q;
+rest h;
+EOF
+
+java -cp .:../tools/antlr-4.13.1-complete.jar \
+  org.antlr.v4.gui.TestRig AudioScore program \
+  -tree song_estrellita.aud
+
+java -cp .;..\tools\antlr-4.13.1-complete.jar org.antlr.v4.gui.TestRig AudioScore program -gui song_estrellita.aud
+
+
+
+
+
 2. Configurar y compilar con CMake
 rm -rf build
 mkdir build
@@ -88,15 +137,33 @@ cd build
 cmake ../src
 cmake --build . -j4
 
+===OPCION 1===
 ./audioscorec song_estrellita.aud
 genera sólo sinopt.ll.
 
+# 1. Compilar IR + runtime
+clang song_estrellita_sinopt.ll ../runtime/runtime_audio_wav.c -lm -o song_exe
+
+# 2. Ejecutar y generar output.wav
+./song_exe
+
+
+===OPCION 2===
 ./audioscorec song_estrellita.aud -O
 genera sinopt.ll + optimized.ll.
 
+# 1. Compilar IR + runtime
+clang song_estrellita_opt.ll ../runtime/runtime_audio_wav.c -lm -o song_exe
+
+# 2. Ejecutar y generar output.wav
+./song_exe
+
+
+===OPCION 3===
 ./audioscorec song_estrellita.aud -jit
 genera sinopt.ll y ejecuta el JIT, creando output.wav.
 
+===OPCION 4===
 ./audioscorec song_estrellita.aud -O -jit
 aplica O2, escribe optimized.ll y JIT ejecuta la versión optimizada.
 
