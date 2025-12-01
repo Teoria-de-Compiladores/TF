@@ -1,0 +1,29 @@
+# Ignorar carpeta de build
+build/
+
+# Ignorar carpeta de debug_tree
+debug_tree/
+
+# Archivos generados por CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Archivos compilados
+*.o
+*.obj
+*.class
+
+# Archivos generados por ANTLR
+*.interp
+*.tokens
+*.class
+
+# Archivos de audio generados
+*.wav
+*.aud
+
+# Archivos temporales de VSCode
+.vscode/
