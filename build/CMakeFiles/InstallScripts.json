@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/mnt/c/ct/AudioScoreLang/build/cmake_install.cmake"
+		"/mnt/d/ct/TF/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

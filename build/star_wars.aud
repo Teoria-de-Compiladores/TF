@@ -1,0 +1,30 @@
+tempo 120;
+
+C4 q; 
+C4 q; 
+C4 q;
+rest e;
+
+C4 h; 
+G4 h;
+
+F4 e; 
+E4 e; 
+D4 e;
+C5 h;
+G4 q;
+
+F4 e; 
+E4 e; 
+D4 e;
+C5 h;
+G4 q;
+
+F4 e; 
+E4 e; 
+F4 e;
+D4 h;
+
+rest q;
+C4 q;
+rest q;

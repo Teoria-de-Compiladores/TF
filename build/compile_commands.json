@@ -1,50 +1,50 @@
 [
 {
-  "directory": "/mnt/c/ct/AudioScoreLang/build",
-  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/c/ct/AudioScoreLang/src -I/mnt/c/ct/AudioScoreLang/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/AudioMain.cpp.o -c /mnt/c/ct/AudioScoreLang/src/AudioMain.cpp",
-  "file": "/mnt/c/ct/AudioScoreLang/src/AudioMain.cpp",
+  "directory": "/mnt/d/ct/TF/build",
+  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/d/ct/TF/src -I/mnt/d/ct/TF/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/AudioMain.cpp.o -c /mnt/d/ct/TF/src/AudioMain.cpp",
+  "file": "/mnt/d/ct/TF/src/AudioMain.cpp",
   "output": "CMakeFiles/audioscorec.dir/AudioMain.cpp.o"
 },
 {
-  "directory": "/mnt/c/ct/AudioScoreLang/build",
-  "command": "/usr/sbin/cc  -I/usr/include/antlr4-runtime -I/mnt/c/ct/AudioScoreLang/src -I/mnt/c/ct/AudioScoreLang/src/../gen/grammar/src -std=gnu11   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o -c /mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c",
-  "file": "/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c",
-  "output": "CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o"
+  "directory": "/mnt/d/ct/TF/build",
+  "command": "/usr/sbin/cc  -I/usr/include/antlr4-runtime -I/mnt/d/ct/TF/src -I/mnt/d/ct/TF/src/../gen/grammar/src -std=gnu11   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/d/ct/TF/runtime/runtime_audio_wav.c.o -c /mnt/d/ct/TF/runtime/runtime_audio_wav.c",
+  "file": "/mnt/d/ct/TF/runtime/runtime_audio_wav.c",
+  "output": "CMakeFiles/audioscorec.dir/mnt/d/ct/TF/runtime/runtime_audio_wav.c.o"
 },
 {
-  "directory": "/mnt/c/ct/AudioScoreLang/build",
-  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/c/ct/AudioScoreLang/src -I/mnt/c/ct/AudioScoreLang/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp",
-  "file": "/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp",
-  "output": "CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o"
+  "directory": "/mnt/d/ct/TF/build",
+  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/d/ct/TF/src -I/mnt/d/ct/TF/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseListener.cpp.o -c /mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseListener.cpp",
+  "file": "/mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseListener.cpp",
+  "output": "CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseListener.cpp.o"
 },
 {
-  "directory": "/mnt/c/ct/AudioScoreLang/build",
-  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/c/ct/AudioScoreLang/src -I/mnt/c/ct/AudioScoreLang/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp",
-  "file": "/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp",
-  "output": "CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o"
+  "directory": "/mnt/d/ct/TF/build",
+  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/d/ct/TF/src -I/mnt/d/ct/TF/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseVisitor.cpp.o -c /mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseVisitor.cpp",
+  "file": "/mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseVisitor.cpp",
+  "output": "CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseVisitor.cpp.o"
 },
 {
-  "directory": "/mnt/c/ct/AudioScoreLang/build",
-  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/c/ct/AudioScoreLang/src -I/mnt/c/ct/AudioScoreLang/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp",
-  "file": "/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp",
-  "output": "CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o"
+  "directory": "/mnt/d/ct/TF/build",
+  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/d/ct/TF/src -I/mnt/d/ct/TF/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreLexer.cpp.o -c /mnt/d/ct/TF/gen/grammar/src/AudioScoreLexer.cpp",
+  "file": "/mnt/d/ct/TF/gen/grammar/src/AudioScoreLexer.cpp",
+  "output": "CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreLexer.cpp.o"
 },
 {
-  "directory": "/mnt/c/ct/AudioScoreLang/build",
-  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/c/ct/AudioScoreLang/src -I/mnt/c/ct/AudioScoreLang/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp",
-  "file": "/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp",
-  "output": "CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o"
+  "directory": "/mnt/d/ct/TF/build",
+  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/d/ct/TF/src -I/mnt/d/ct/TF/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreListener.cpp.o -c /mnt/d/ct/TF/gen/grammar/src/AudioScoreListener.cpp",
+  "file": "/mnt/d/ct/TF/gen/grammar/src/AudioScoreListener.cpp",
+  "output": "CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreListener.cpp.o"
 },
 {
-  "directory": "/mnt/c/ct/AudioScoreLang/build",
-  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/c/ct/AudioScoreLang/src -I/mnt/c/ct/AudioScoreLang/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp",
-  "file": "/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp",
-  "output": "CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o"
+  "directory": "/mnt/d/ct/TF/build",
+  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/d/ct/TF/src -I/mnt/d/ct/TF/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreParser.cpp.o -c /mnt/d/ct/TF/gen/grammar/src/AudioScoreParser.cpp",
+  "file": "/mnt/d/ct/TF/gen/grammar/src/AudioScoreParser.cpp",
+  "output": "CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreParser.cpp.o"
 },
 {
-  "directory": "/mnt/c/ct/AudioScoreLang/build",
-  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/c/ct/AudioScoreLang/src -I/mnt/c/ct/AudioScoreLang/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o -c /mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp",
-  "file": "/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp",
-  "output": "CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o"
+  "directory": "/mnt/d/ct/TF/build",
+  "command": "/usr/sbin/c++  -I/usr/include/antlr4-runtime -I/mnt/d/ct/TF/src -I/mnt/d/ct/TF/src/../gen/grammar/src -std=gnu++20   -D_GNU_SOURCE -DEXPERIMENTAL_KEY_INSTRUCTIONS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreVisitor.cpp.o -c /mnt/d/ct/TF/gen/grammar/src/AudioScoreVisitor.cpp",
+  "file": "/mnt/d/ct/TF/gen/grammar/src/AudioScoreVisitor.cpp",
+  "output": "CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreVisitor.cpp.o"
 }
 ]

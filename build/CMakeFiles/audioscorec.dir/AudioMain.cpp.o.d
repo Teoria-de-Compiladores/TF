@@ -1,5 +1,5 @@
 CMakeFiles/audioscorec.dir/AudioMain.cpp.o: \
- /mnt/c/ct/AudioScoreLang/src/AudioMain.cpp /usr/include/stdc-predef.h \
+ /mnt/d/ct/TF/src/AudioMain.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/15.2.1/iostream \
  /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -398,9 +398,9 @@ CMakeFiles/audioscorec.dir/AudioMain.cpp.o: \
  /usr/include/antlr4-runtime/tree/xpath/XPathTokenElement.h \
  /usr/include/antlr4-runtime/tree/xpath/XPathWildcardAnywhereElement.h \
  /usr/include/antlr4-runtime/tree/xpath/XPathWildcardElement.h \
- /mnt/c/ct/AudioScoreLang/src/../gen/grammar/src/AudioScoreLexer.h \
- /mnt/c/ct/AudioScoreLang/src/../gen/grammar/src/AudioScoreParser.h \
- /mnt/c/ct/AudioScoreLang/src/AudioDriver.h /usr/include/c++/15.2.1/cmath \
+ /mnt/d/ct/TF/src/../gen/grammar/src/AudioScoreLexer.h \
+ /mnt/d/ct/TF/src/../gen/grammar/src/AudioScoreParser.h \
+ /mnt/d/ct/TF/src/AudioDriver.h /usr/include/c++/15.2.1/cmath \
  /usr/include/math.h /usr/include/bits/math-vector.h \
  /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
@@ -420,8 +420,8 @@ CMakeFiles/audioscorec.dir/AudioMain.cpp.o: \
  /usr/include/c++/15.2.1/tr1/poly_hermite.tcc \
  /usr/include/c++/15.2.1/tr1/poly_laguerre.tcc \
  /usr/include/c++/15.2.1/tr1/riemann_zeta.tcc \
- /mnt/c/ct/AudioScoreLang/src/../gen/grammar/src/AudioScoreBaseVisitor.h \
- /mnt/c/ct/AudioScoreLang/src/../gen/grammar/src/AudioScoreVisitor.h \
+ /mnt/d/ct/TF/src/../gen/grammar/src/AudioScoreBaseVisitor.h \
+ /mnt/d/ct/TF/src/../gen/grammar/src/AudioScoreVisitor.h \
  /usr/include/llvm/IR/BasicBlock.h /usr/include/llvm-c/Types.h \
  /usr/include/llvm-c/DataTypes.h /usr/include/inttypes.h \
  /usr/include/llvm-c/ExternC.h /usr/include/llvm/ADT/DenseMap.h \

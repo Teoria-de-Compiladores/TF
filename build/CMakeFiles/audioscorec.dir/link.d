@@ -3,13 +3,13 @@ audioscorec: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
   CMakeFiles/audioscorec.dir/AudioMain.cpp.o \
-  CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o \
-  CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o \
-  CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o \
-  CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o \
-  CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o \
-  CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o \
-  CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o \
+  CMakeFiles/audioscorec.dir/mnt/d/ct/TF/runtime/runtime_audio_wav.c.o \
+  CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseListener.cpp.o \
+  CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseVisitor.cpp.o \
+  CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreLexer.cpp.o \
+  CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreListener.cpp.o \
+  CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreParser.cpp.o \
+  CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreVisitor.cpp.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libantlr4-runtime.so \
   /usr/lib/libLLVM.so.21.1 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
@@ -56,19 +56,19 @@ audioscorec: \
 
 CMakeFiles/audioscorec.dir/AudioMain.cpp.o:
 
-CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/runtime/runtime_audio_wav.c.o:
+CMakeFiles/audioscorec.dir/mnt/d/ct/TF/runtime/runtime_audio_wav.c.o:
 
-CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseListener.cpp.o:
+CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseListener.cpp.o:
 
-CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreBaseVisitor.cpp.o:
+CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreBaseVisitor.cpp.o:
 
-CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreLexer.cpp.o:
+CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreLexer.cpp.o:
 
-CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreListener.cpp.o:
+CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreListener.cpp.o:
 
-CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreParser.cpp.o:
+CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreParser.cpp.o:
 
-CMakeFiles/audioscorec.dir/mnt/c/ct/AudioScoreLang/gen/grammar/src/AudioScoreVisitor.cpp.o:
+CMakeFiles/audioscorec.dir/mnt/d/ct/TF/gen/grammar/src/AudioScoreVisitor.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libantlr4-runtime.so:
 

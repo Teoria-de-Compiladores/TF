@@ -68,6 +68,7 @@ public:
             restTy, Function::ExternalLinkage, "write_rest", module_.get());
 
         // 3. Definir: i32 @main(): basic block entry
+        //Dentro de main voy a insertar todas las instrucciones que representan el tempo, notas y silencios.
         FunctionType *mainTy = FunctionType::get(i32Ty, false);
         mainFn_ = Function::Create(
             mainTy, Function::ExternalLinkage, "main", module_.get());
@@ -195,7 +196,7 @@ public:
 
         LoopAnalysisManager LAM;
         FunctionAnalysisManager FAM;
-        CGSCCAnalysisManager CGAM;
+        CGSCCAnalysisManager CGAM; //SCC = Strongly Connected Component, básicamente grupos de funciones que se llaman entre sí de manera cíclica
         ModuleAnalysisManager MAM;
 
         PB.registerModuleAnalyses(MAM);

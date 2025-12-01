@@ -35,7 +35,7 @@ void runWithJIT(std::unique_ptr<Module> M) {
 
     std::string errStr;
     ExecutionEngine *EE =
-        EngineBuilder(std::move(M)).setErrorStr(&errStr).create();
+        EngineBuilder(std::move(M)).setErrorStr(&errStr).create(); //recibe el Module con todo tu IR y construye el JIT
 
     if (!EE) {
         errs() << "Error creando el JIT: " << errStr << "\n";
