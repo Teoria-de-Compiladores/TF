@@ -33,8 +33,7 @@ file(GLOB_RECURSE ANTLR_SOURCES
 # Fuentes propias
 set(SRC_FILES
     ${CMAKE_SOURCE_DIR}/AudioMain.cpp
-    # AudioDriver.h es solo header, se incluye desde AudioMain.cpp
-    ${CMAKE_SOURCE_DIR}/../runtime/runtime_audio_wav.c   # <-- runtime C
+    ${CMAKE_SOURCE_DIR}/../runtime/runtime_audio_wav.c
 )
 
 add_executable(audioscorec

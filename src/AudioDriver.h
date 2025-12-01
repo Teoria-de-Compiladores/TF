@@ -24,6 +24,9 @@
 #include "llvm/Passes/PassBuilder.h"
 #include "llvm/Passes/OptimizationLevel.h"
 
+//AudioDriver hereda de AudioScoreBaseVisitor, la clase base que genera ANTLR
+//Eso significa que puede sobrescribir métodos como visitProgram, visitNoteStmt, etc.,
+//para reaccionar cuando visita cada nodo del árbol.
 class AudioDriver : public AudioScoreBaseVisitor {
 public:
     AudioDriver()
@@ -37,6 +40,8 @@ public:
           mainFn_(nullptr) {}
 
     // program: tempoDecl? statement* EOF ;
+    //visitProgram se ejecuta cuando el Visitor llega al nodo raíz program.
+    //Aquí construyo todo el esqueleto del programa en LLVM.
     antlrcpp::Any visitProgram(AudioScoreParser::ProgramContext *ctx) override {
         using namespace llvm;
 
@@ -72,6 +77,7 @@ public:
         builder_->SetInsertPoint(entryBB);
 
         // 4. init_wav_writer();
+        //Lo primero que hace main es llamar al runtime para abrir el archivo WAV.
         auto *globalStr = builder_->CreateGlobalString("output.wav", "wavName");
         Value *wavName  = builder_->CreateBitCast(globalStr, charPtrTy);
         builder_->CreateCall(initFn_, {wavName});
@@ -81,6 +87,7 @@ public:
         if (ctx->tempoDecl()) {
             visit(ctx->tempoDecl());
         }
+        //Luego se visita cada statement (notas o silencios).
         for (auto *stmt : ctx->statement()) {
             visit(stmt);
         }
@@ -159,9 +166,10 @@ public:
 
     // ====== API para main ======
 
+    //por si el main necesita acceso al LLVMContext.
     llvm::LLVMContext &getContext() { return context_; }
 
-    // Para JIT: se tranfiere ownership del módulo al main
+    // Para JIT: se tranfiere ownership del módulo al main (para ejecutarlo en memoria)
     std::unique_ptr<llvm::Module> takeModule() {
         return std::move(module_);
     }

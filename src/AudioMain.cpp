@@ -26,6 +26,8 @@ extern "C" {
 }
 
 void runWithJIT(std::unique_ptr<Module> M) {
+    //InitializeNativeTarget() y InitializeNativeTargetAsmPrinter() 
+    // preparan LLVM para generar código para la propia máquina.
     InitializeNativeTarget();
     InitializeNativeTargetAsmPrinter();
 
@@ -55,6 +57,7 @@ void runWithJIT(std::unique_ptr<Module> M) {
     }
 
     //buscar y ejecutar main()
+    //Busca la función main dentro del módulo LLVM (la que generaste en visitProgram).
     Function *MainFunc = EE->FindFunctionNamed("main");
     if (!MainFunc) {
         errs() << "No se encontró la función main para ejecutar con JIT\n";
@@ -108,12 +111,13 @@ int main(int argc, const char* argv[]) {
     buffer << stream.rdbuf();
     std::string code = buffer.str();
 
-    ANTLRInputStream input(code);
-    AudioScoreLexer lexer(&input);
-    CommonTokenStream tokens(&lexer);
-    AudioScoreParser parser(&tokens);
+    //Pipeline de ANTLR
+    ANTLRInputStream input(code); //envuelve el string de código
+    AudioScoreLexer lexer(&input); //separa en tokens
+    CommonTokenStream tokens(&lexer); //buffer de tokens
+    AudioScoreParser parser(&tokens); //aplica la gramática y construye un árbol de derivación
 
-    tree::ParseTree *tree = parser.program();
+    tree::ParseTree *tree = parser.program(); //nodo raíz del árbol (program)
 
     // 1) se construye el módulo LLVM con el driver
     AudioDriver driver;

@@ -1,0 +1,14 @@
+tempo 180;
+
+// Intro clásica
+E5 e; E5 e; rest e; E5 e; 
+rest e; C5 e; E5 q;
+G5 h;
+G4 h;
+
+// Tema principal
+C5 q; G4 e; E4 q;
+A4 q; B4 q; Bb4 e; A4 q;
+G4 e; E5 q; G5 q;
+A5 q; F5 e; G5 e;
+rest e; E5 q; C5 e; D5 e; B4 q;
