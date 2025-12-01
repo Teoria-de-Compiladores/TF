@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/mnt/d/ct/TF/build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
