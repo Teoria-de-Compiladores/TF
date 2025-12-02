@@ -17,11 +17,20 @@ public:
   virtual void enterProgram(AudioScoreParser::ProgramContext *ctx) = 0;
   virtual void exitProgram(AudioScoreParser::ProgramContext *ctx) = 0;
 
-  virtual void enterTempoDecl(AudioScoreParser::TempoDeclContext *ctx) = 0;
-  virtual void exitTempoDecl(AudioScoreParser::TempoDeclContext *ctx) = 0;
+  virtual void enterTempoStmt(AudioScoreParser::TempoStmtContext *ctx) = 0;
+  virtual void exitTempoStmt(AudioScoreParser::TempoStmtContext *ctx) = 0;
+
+  virtual void enterPatternDecl(AudioScoreParser::PatternDeclContext *ctx) = 0;
+  virtual void exitPatternDecl(AudioScoreParser::PatternDeclContext *ctx) = 0;
 
   virtual void enterStatement(AudioScoreParser::StatementContext *ctx) = 0;
   virtual void exitStatement(AudioScoreParser::StatementContext *ctx) = 0;
+
+  virtual void enterLoopStmt(AudioScoreParser::LoopStmtContext *ctx) = 0;
+  virtual void exitLoopStmt(AudioScoreParser::LoopStmtContext *ctx) = 0;
+
+  virtual void enterPlayStmt(AudioScoreParser::PlayStmtContext *ctx) = 0;
+  virtual void exitPlayStmt(AudioScoreParser::PlayStmtContext *ctx) = 0;
 
   virtual void enterNoteStmt(AudioScoreParser::NoteStmtContext *ctx) = 0;
   virtual void exitNoteStmt(AudioScoreParser::NoteStmtContext *ctx) = 0;

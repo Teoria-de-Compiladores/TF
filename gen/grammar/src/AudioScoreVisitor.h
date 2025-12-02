@@ -21,9 +21,15 @@ public:
    */
     virtual std::any visitProgram(AudioScoreParser::ProgramContext *context) = 0;
 
-    virtual std::any visitTempoDecl(AudioScoreParser::TempoDeclContext *context) = 0;
+    virtual std::any visitTempoStmt(AudioScoreParser::TempoStmtContext *context) = 0;
+
+    virtual std::any visitPatternDecl(AudioScoreParser::PatternDeclContext *context) = 0;
 
     virtual std::any visitStatement(AudioScoreParser::StatementContext *context) = 0;
+
+    virtual std::any visitLoopStmt(AudioScoreParser::LoopStmtContext *context) = 0;
+
+    virtual std::any visitPlayStmt(AudioScoreParser::PlayStmtContext *context) = 0;
 
     virtual std::any visitNoteStmt(AudioScoreParser::NoteStmtContext *context) = 0;
 

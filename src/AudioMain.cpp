@@ -16,10 +16,11 @@ using namespace antlr4;
 using namespace llvm;
 using std::string;
 
-// ==== declaracion de las funciones del runtime para poder mapearlas ====
+// Declaracion de las funciones del runtime para poder mapearlas 
 // Están definidas en runtime_audio_wav.c (C puro), por eso el extern "C"
 extern "C" {
-    void init_wav_writer(void);
+    // firma actualizada para coincidir con el runtime en C
+    void init_wav_writer(const char *filename);
     void finalize_wav(void);
     void write_sine_note(double freqHz, int durationMs);
     void write_rest(int durationMs);
@@ -42,7 +43,7 @@ void runWithJIT(std::unique_ptr<Module> M) {
         return;
     }
 
-    // === Vincular funciones externas del runtime al módulo JITeado ===
+    // Vincular funciones externas del runtime al módulo JIT
     if (Function *F = Mraw->getFunction("init_wav_writer")) {
         EE->addGlobalMapping(F, (void*)&init_wav_writer);
     }

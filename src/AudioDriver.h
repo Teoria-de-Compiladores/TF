@@ -6,6 +6,7 @@
 #include <system_error>
 #include <memory>
 #include <iostream>
+#include <vector>
 #include "antlr4-runtime.h"
 #include "AudioScoreBaseVisitor.h"
 #include "AudioScoreParser.h"
@@ -39,7 +40,7 @@ public:
           restFn_(nullptr),
           mainFn_(nullptr) {}
 
-    // program: tempoDecl? statement* EOF ;
+    // program: (patternDecl | statement)* EOF ;
     //visitProgram se ejecuta cuando el Visitor llega al nodo raíz program.
     //Aquí construyo todo el esqueleto del programa en LLVM.
     antlrcpp::Any visitProgram(AudioScoreParser::ProgramContext *ctx) override {
@@ -52,7 +53,7 @@ public:
 
         // 2. Declarar funciones externas del runtime (runtime_audio_wav.c)
         Type *charPtrTy = PointerType::get(context_, 0);
-        FunctionType *initTy = FunctionType::get(voidTy, {charPtrTy}, false);
+        FunctionType *initTy  = FunctionType::get(voidTy, {charPtrTy}, false);
         FunctionType *finalTy = FunctionType::get(voidTy, false);
         FunctionType *noteTy  = FunctionType::get(voidTy, {doubleTy, i32Ty}, false);
         FunctionType *restTy  = FunctionType::get(voidTy, {i32Ty}, false);
@@ -83,14 +84,17 @@ public:
         Value *wavName  = builder_->CreateBitCast(globalStr, charPtrTy);
         builder_->CreateCall(initFn_, {wavName});
 
-        // 5. Visitar tempo (si existe) y statements
-        // tempoDecl : ejm Si el usuario escribió tempo 90; se ejecuta visitTempoDecl.
-        if (ctx->tempoDecl()) {
-            visit(ctx->tempoDecl());
-        }
-        //Luego se visita cada statement (notas o silencios).
-        for (auto *stmt : ctx->statement()) {
-            visit(stmt);
+        // 5. Recorrer los hijos en el orden original:
+        //    - Si es un patternDecl: se registra en el mapa (no genera audio inmediato).
+        //    - Si es un statement: se ejecuta (notas, rests, tempo, loop, play, etc.).
+        for (auto *child : ctx->children) {
+            if (!child) continue;
+
+            if (auto *p = dynamic_cast<AudioScoreParser::PatternDeclContext*>(child)) {
+                visit(p);
+            } else if (auto *s = dynamic_cast<AudioScoreParser::StatementContext*>(child)) {
+                visit(s);
+            }
         }
 
         // 6. finalize_wav(); return 0;
@@ -109,22 +113,69 @@ public:
         return nullptr;
     }
 
-    // tempoDecl: 'tempo' INT ';'
+    // tempoStmt: 'tempo' INT ';'
     //Convierte el token INT a entero
     //Actualiza tempoBpm_ : se usará al calcular las duraciones.
-    antlrcpp::Any visitTempoDecl(AudioScoreParser::TempoDeclContext *ctx) override {
+    antlrcpp::Any visitTempoStmt(AudioScoreParser::TempoStmtContext *ctx) override {
         int bpm = std::stoi(ctx->INT()->getText());
         tempoBpm_ = bpm;
         return nullptr;
     }
 
-    // noteStmt: NOTE OCTAVE DUR ;
+    // patternDecl: 'pattern' ID '{' statement* '}'
+    //Guarda la lista de statements asociados a un nombre de pattern (intro, coro, etc.).
+    antlrcpp::Any visitPatternDecl(AudioScoreParser::PatternDeclContext *ctx) override {
+        std::string name = ctx->ID()->getText();
+
+        //Copiamos los punteros a los statement() del patrón.
+        std::vector<AudioScoreParser::StatementContext*> stmts;
+        stmts.reserve(ctx->statement().size());
+        for (auto *s : ctx->statement()) {
+            stmts.push_back(s);
+        }
+
+        patterns_[name] = std::move(stmts);
+        return nullptr;
+    }
+
+    // playStmt: 'play' ID
+    //Busca el pattern por nombre y visita sus statements como si estuvieran inlined.
+    antlrcpp::Any visitPlayStmt(AudioScoreParser::PlayStmtContext *ctx) override {
+        std::string name = ctx->ID()->getText();
+        auto it = patterns_.find(name);
+        if (it == patterns_.end()) {
+            throw std::runtime_error("Pattern no definido: " + name);
+        }
+
+        for (auto *stmt : it->second) {
+            visit(stmt); // reutiliza la lógica existente (notas, rests, loops, etc.)
+        }
+
+        return nullptr;
+    }
+
+    // loopStmt: 'loop' INT '{' statement* '}'
+    //Repite N veces el bloque de statements internos.
+    antlrcpp::Any visitLoopStmt(AudioScoreParser::LoopStmtContext *ctx) override {
+        int times = std::stoi(ctx->INT()->getText());
+
+        for (int i = 0; i < times; ++i) {
+            for (auto *stmt : ctx->statement()) {
+                visit(stmt);
+            }
+        }
+
+        return nullptr;
+    }
+
+    // noteStmt: NOTE INT DUR ;
     //Extrae los 3 tokens de la nota
     antlrcpp::Any visitNoteStmt(AudioScoreParser::NoteStmtContext *ctx) override {
         using namespace llvm;
 
         std::string noteText   = ctx->NOTE()->getText();   // "C", "D#", etc.
-        std::string octaveText = ctx->OCTAVE()->getText(); // "4"
+        // Aquí la octava viene como INT (4, 5, etc.)
+        std::string octaveText = ctx->INT()->getText();    // "4"
         std::string durText    = ctx->DUR()->getText();    // "q", "h", "e"
 
         int midi = noteToMidi(noteText, octaveText); //Convierte nota+octava a número MIDI.
@@ -231,6 +282,9 @@ private:
     llvm::Function *noteFn_;
     llvm::Function *restFn_;
     llvm::Function *mainFn_;
+
+    // Mapa de patterns: nombre → lista de statements de ese patrón
+    std::unordered_map<std::string, std::vector<AudioScoreParser::StatementContext*>> patterns_;
 
     // ==== Helpers musicales ====
     int noteToMidi(const std::string &note, const std::string &octaveStr) {

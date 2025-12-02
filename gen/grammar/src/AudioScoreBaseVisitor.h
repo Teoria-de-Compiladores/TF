@@ -19,11 +19,23 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual std::any visitTempoDecl(AudioScoreParser::TempoDeclContext *ctx) override {
+  virtual std::any visitTempoStmt(AudioScoreParser::TempoStmtContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitPatternDecl(AudioScoreParser::PatternDeclContext *ctx) override {
     return visitChildren(ctx);
   }
 
   virtual std::any visitStatement(AudioScoreParser::StatementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitLoopStmt(AudioScoreParser::LoopStmtContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitPlayStmt(AudioScoreParser::PlayStmtContext *ctx) override {
     return visitChildren(ctx);
   }
 

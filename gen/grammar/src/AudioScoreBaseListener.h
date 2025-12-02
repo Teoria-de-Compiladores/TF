@@ -19,11 +19,20 @@ public:
   virtual void enterProgram(AudioScoreParser::ProgramContext * /*ctx*/) override { }
   virtual void exitProgram(AudioScoreParser::ProgramContext * /*ctx*/) override { }
 
-  virtual void enterTempoDecl(AudioScoreParser::TempoDeclContext * /*ctx*/) override { }
-  virtual void exitTempoDecl(AudioScoreParser::TempoDeclContext * /*ctx*/) override { }
+  virtual void enterTempoStmt(AudioScoreParser::TempoStmtContext * /*ctx*/) override { }
+  virtual void exitTempoStmt(AudioScoreParser::TempoStmtContext * /*ctx*/) override { }
+
+  virtual void enterPatternDecl(AudioScoreParser::PatternDeclContext * /*ctx*/) override { }
+  virtual void exitPatternDecl(AudioScoreParser::PatternDeclContext * /*ctx*/) override { }
 
   virtual void enterStatement(AudioScoreParser::StatementContext * /*ctx*/) override { }
   virtual void exitStatement(AudioScoreParser::StatementContext * /*ctx*/) override { }
+
+  virtual void enterLoopStmt(AudioScoreParser::LoopStmtContext * /*ctx*/) override { }
+  virtual void exitLoopStmt(AudioScoreParser::LoopStmtContext * /*ctx*/) override { }
+
+  virtual void enterPlayStmt(AudioScoreParser::PlayStmtContext * /*ctx*/) override { }
+  virtual void exitPlayStmt(AudioScoreParser::PlayStmtContext * /*ctx*/) override { }
 
   virtual void enterNoteStmt(AudioScoreParser::NoteStmtContext * /*ctx*/) override { }
   virtual void exitNoteStmt(AudioScoreParser::NoteStmtContext * /*ctx*/) override { }

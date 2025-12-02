@@ -53,27 +53,39 @@ void audioscoreParserInitialize() {
 #endif
   auto staticData = std::make_unique<AudioScoreParserStaticData>(
     std::vector<std::string>{
-      "program", "tempoDecl", "statement", "noteStmt", "restStmt"
+      "program", "tempoStmt", "patternDecl", "statement", "loopStmt", "playStmt", 
+      "noteStmt", "restStmt"
     },
     std::vector<std::string>{
-      "", "'tempo'", "';'", "'rest'"
+      "", "'tempo'", "';'", "'pattern'", "'{'", "'}'", "'loop'", "'play'", 
+      "'rest'"
     },
     std::vector<std::string>{
-      "", "", "", "", "NOTE", "OCTAVE", "DUR", "INT", "WS"
+      "", "", "", "", "", "", "", "", "", "NOTE", "DUR", "INT", "ID", "WS"
     }
   );
   static const int32_t serializedATNSegment[] = {
-  	4,1,8,41,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,1,0,3,0,12,8,0,1,0,5,
-  	0,15,8,0,10,0,12,0,18,9,0,1,0,1,0,1,1,1,1,1,1,1,1,1,2,1,2,1,2,1,2,1,2,
-  	1,2,3,2,32,8,2,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,0,0,5,0,2,4,6,8,0,0,38,
-  	0,11,1,0,0,0,2,21,1,0,0,0,4,31,1,0,0,0,6,33,1,0,0,0,8,37,1,0,0,0,10,12,
-  	3,2,1,0,11,10,1,0,0,0,11,12,1,0,0,0,12,16,1,0,0,0,13,15,3,4,2,0,14,13,
-  	1,0,0,0,15,18,1,0,0,0,16,14,1,0,0,0,16,17,1,0,0,0,17,19,1,0,0,0,18,16,
-  	1,0,0,0,19,20,5,0,0,1,20,1,1,0,0,0,21,22,5,1,0,0,22,23,5,7,0,0,23,24,
-  	5,2,0,0,24,3,1,0,0,0,25,26,3,6,3,0,26,27,5,2,0,0,27,32,1,0,0,0,28,29,
-  	3,8,4,0,29,30,5,2,0,0,30,32,1,0,0,0,31,25,1,0,0,0,31,28,1,0,0,0,32,5,
-  	1,0,0,0,33,34,5,4,0,0,34,35,5,5,0,0,35,36,5,6,0,0,36,7,1,0,0,0,37,38,
-  	5,3,0,0,38,39,5,6,0,0,39,9,1,0,0,0,3,11,16,31
+  	4,1,13,75,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+  	7,7,1,0,1,0,5,0,19,8,0,10,0,12,0,22,9,0,1,0,1,0,1,1,1,1,1,1,1,1,1,2,1,
+  	2,1,2,1,2,5,2,34,8,2,10,2,12,2,37,9,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,1,3,
+  	1,3,1,3,1,3,1,3,1,3,3,3,52,8,3,1,4,1,4,1,4,1,4,5,4,58,8,4,10,4,12,4,61,
+  	9,4,1,4,1,4,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,0,0,8,0,2,4,6,
+  	8,10,12,14,0,0,74,0,20,1,0,0,0,2,25,1,0,0,0,4,29,1,0,0,0,6,51,1,0,0,0,
+  	8,53,1,0,0,0,10,64,1,0,0,0,12,67,1,0,0,0,14,71,1,0,0,0,16,19,3,4,2,0,
+  	17,19,3,6,3,0,18,16,1,0,0,0,18,17,1,0,0,0,19,22,1,0,0,0,20,18,1,0,0,0,
+  	20,21,1,0,0,0,21,23,1,0,0,0,22,20,1,0,0,0,23,24,5,0,0,1,24,1,1,0,0,0,
+  	25,26,5,1,0,0,26,27,5,11,0,0,27,28,5,2,0,0,28,3,1,0,0,0,29,30,5,3,0,0,
+  	30,31,5,12,0,0,31,35,5,4,0,0,32,34,3,6,3,0,33,32,1,0,0,0,34,37,1,0,0,
+  	0,35,33,1,0,0,0,35,36,1,0,0,0,36,38,1,0,0,0,37,35,1,0,0,0,38,39,5,5,0,
+  	0,39,5,1,0,0,0,40,41,3,12,6,0,41,42,5,2,0,0,42,52,1,0,0,0,43,44,3,14,
+  	7,0,44,45,5,2,0,0,45,52,1,0,0,0,46,52,3,2,1,0,47,52,3,8,4,0,48,49,3,10,
+  	5,0,49,50,5,2,0,0,50,52,1,0,0,0,51,40,1,0,0,0,51,43,1,0,0,0,51,46,1,0,
+  	0,0,51,47,1,0,0,0,51,48,1,0,0,0,52,7,1,0,0,0,53,54,5,6,0,0,54,55,5,11,
+  	0,0,55,59,5,4,0,0,56,58,3,6,3,0,57,56,1,0,0,0,58,61,1,0,0,0,59,57,1,0,
+  	0,0,59,60,1,0,0,0,60,62,1,0,0,0,61,59,1,0,0,0,62,63,5,5,0,0,63,9,1,0,
+  	0,0,64,65,5,7,0,0,65,66,5,12,0,0,66,11,1,0,0,0,67,68,5,9,0,0,68,69,5,
+  	11,0,0,69,70,5,10,0,0,70,13,1,0,0,0,71,72,5,8,0,0,72,73,5,10,0,0,73,15,
+  	1,0,0,0,5,18,20,35,51,59
   };
   staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
 
@@ -132,8 +144,12 @@ tree::TerminalNode* AudioScoreParser::ProgramContext::EOF() {
   return getToken(AudioScoreParser::EOF, 0);
 }
 
-AudioScoreParser::TempoDeclContext* AudioScoreParser::ProgramContext::tempoDecl() {
-  return getRuleContext<AudioScoreParser::TempoDeclContext>(0);
+std::vector<AudioScoreParser::PatternDeclContext *> AudioScoreParser::ProgramContext::patternDecl() {
+  return getRuleContexts<AudioScoreParser::PatternDeclContext>();
+}
+
+AudioScoreParser::PatternDeclContext* AudioScoreParser::ProgramContext::patternDecl(size_t i) {
+  return getRuleContext<AudioScoreParser::PatternDeclContext>(i);
 }
 
 std::vector<AudioScoreParser::StatementContext *> AudioScoreParser::ProgramContext::statement() {
@@ -183,27 +199,38 @@ AudioScoreParser::ProgramContext* AudioScoreParser::program() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(11);
-    _errHandler->sync(this);
-
-    _la = _input->LA(1);
-    if (_la == AudioScoreParser::T__0) {
-      setState(10);
-      tempoDecl();
-    }
-    setState(16);
+    setState(20);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AudioScoreParser::T__2
-
-    || _la == AudioScoreParser::NOTE) {
-      setState(13);
-      statement();
+    while ((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 970) != 0)) {
       setState(18);
+      _errHandler->sync(this);
+      switch (_input->LA(1)) {
+        case AudioScoreParser::T__2: {
+          setState(16);
+          patternDecl();
+          break;
+        }
+
+        case AudioScoreParser::T__0:
+        case AudioScoreParser::T__5:
+        case AudioScoreParser::T__6:
+        case AudioScoreParser::T__7:
+        case AudioScoreParser::NOTE: {
+          setState(17);
+          statement();
+          break;
+        }
+
+      default:
+        throw NoViableAltException(this);
+      }
+      setState(22);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
-    setState(19);
+    setState(23);
     match(AudioScoreParser::EOF);
    
   }
@@ -216,44 +243,44 @@ AudioScoreParser::ProgramContext* AudioScoreParser::program() {
   return _localctx;
 }
 
-//----------------- TempoDeclContext ------------------------------------------------------------------
+//----------------- TempoStmtContext ------------------------------------------------------------------
 
-AudioScoreParser::TempoDeclContext::TempoDeclContext(ParserRuleContext *parent, size_t invokingState)
+AudioScoreParser::TempoStmtContext::TempoStmtContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* AudioScoreParser::TempoDeclContext::INT() {
+tree::TerminalNode* AudioScoreParser::TempoStmtContext::INT() {
   return getToken(AudioScoreParser::INT, 0);
 }
 
 
-size_t AudioScoreParser::TempoDeclContext::getRuleIndex() const {
-  return AudioScoreParser::RuleTempoDecl;
+size_t AudioScoreParser::TempoStmtContext::getRuleIndex() const {
+  return AudioScoreParser::RuleTempoStmt;
 }
 
-void AudioScoreParser::TempoDeclContext::enterRule(tree::ParseTreeListener *listener) {
+void AudioScoreParser::TempoStmtContext::enterRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<AudioScoreListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->enterTempoDecl(this);
+    parserListener->enterTempoStmt(this);
 }
 
-void AudioScoreParser::TempoDeclContext::exitRule(tree::ParseTreeListener *listener) {
+void AudioScoreParser::TempoStmtContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<AudioScoreListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->exitTempoDecl(this);
+    parserListener->exitTempoStmt(this);
 }
 
 
-std::any AudioScoreParser::TempoDeclContext::accept(tree::ParseTreeVisitor *visitor) {
+std::any AudioScoreParser::TempoStmtContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<AudioScoreVisitor*>(visitor))
-    return parserVisitor->visitTempoDecl(this);
+    return parserVisitor->visitTempoStmt(this);
   else
     return visitor->visitChildren(this);
 }
 
-AudioScoreParser::TempoDeclContext* AudioScoreParser::tempoDecl() {
-  TempoDeclContext *_localctx = _tracker.createInstance<TempoDeclContext>(_ctx, getState());
-  enterRule(_localctx, 2, AudioScoreParser::RuleTempoDecl);
+AudioScoreParser::TempoStmtContext* AudioScoreParser::tempoStmt() {
+  TempoStmtContext *_localctx = _tracker.createInstance<TempoStmtContext>(_ctx, getState());
+  enterRule(_localctx, 2, AudioScoreParser::RuleTempoStmt);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -264,12 +291,99 @@ AudioScoreParser::TempoDeclContext* AudioScoreParser::tempoDecl() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(21);
+    setState(25);
     match(AudioScoreParser::T__0);
-    setState(22);
+    setState(26);
     match(AudioScoreParser::INT);
-    setState(23);
+    setState(27);
     match(AudioScoreParser::T__1);
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- PatternDeclContext ------------------------------------------------------------------
+
+AudioScoreParser::PatternDeclContext::PatternDeclContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* AudioScoreParser::PatternDeclContext::ID() {
+  return getToken(AudioScoreParser::ID, 0);
+}
+
+std::vector<AudioScoreParser::StatementContext *> AudioScoreParser::PatternDeclContext::statement() {
+  return getRuleContexts<AudioScoreParser::StatementContext>();
+}
+
+AudioScoreParser::StatementContext* AudioScoreParser::PatternDeclContext::statement(size_t i) {
+  return getRuleContext<AudioScoreParser::StatementContext>(i);
+}
+
+
+size_t AudioScoreParser::PatternDeclContext::getRuleIndex() const {
+  return AudioScoreParser::RulePatternDecl;
+}
+
+void AudioScoreParser::PatternDeclContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<AudioScoreListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterPatternDecl(this);
+}
+
+void AudioScoreParser::PatternDeclContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<AudioScoreListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitPatternDecl(this);
+}
+
+
+std::any AudioScoreParser::PatternDeclContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<AudioScoreVisitor*>(visitor))
+    return parserVisitor->visitPatternDecl(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+AudioScoreParser::PatternDeclContext* AudioScoreParser::patternDecl() {
+  PatternDeclContext *_localctx = _tracker.createInstance<PatternDeclContext>(_ctx, getState());
+  enterRule(_localctx, 4, AudioScoreParser::RulePatternDecl);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(29);
+    match(AudioScoreParser::T__2);
+    setState(30);
+    match(AudioScoreParser::ID);
+    setState(31);
+    match(AudioScoreParser::T__3);
+    setState(35);
+    _errHandler->sync(this);
+    _la = _input->LA(1);
+    while ((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 962) != 0)) {
+      setState(32);
+      statement();
+      setState(37);
+      _errHandler->sync(this);
+      _la = _input->LA(1);
+    }
+    setState(38);
+    match(AudioScoreParser::T__4);
    
   }
   catch (RecognitionException &e) {
@@ -293,6 +407,18 @@ AudioScoreParser::NoteStmtContext* AudioScoreParser::StatementContext::noteStmt(
 
 AudioScoreParser::RestStmtContext* AudioScoreParser::StatementContext::restStmt() {
   return getRuleContext<AudioScoreParser::RestStmtContext>(0);
+}
+
+AudioScoreParser::TempoStmtContext* AudioScoreParser::StatementContext::tempoStmt() {
+  return getRuleContext<AudioScoreParser::TempoStmtContext>(0);
+}
+
+AudioScoreParser::LoopStmtContext* AudioScoreParser::StatementContext::loopStmt() {
+  return getRuleContext<AudioScoreParser::LoopStmtContext>(0);
+}
+
+AudioScoreParser::PlayStmtContext* AudioScoreParser::StatementContext::playStmt() {
+  return getRuleContext<AudioScoreParser::PlayStmtContext>(0);
 }
 
 
@@ -322,7 +448,7 @@ std::any AudioScoreParser::StatementContext::accept(tree::ParseTreeVisitor *visi
 
 AudioScoreParser::StatementContext* AudioScoreParser::statement() {
   StatementContext *_localctx = _tracker.createInstance<StatementContext>(_ctx, getState());
-  enterRule(_localctx, 4, AudioScoreParser::RuleStatement);
+  enterRule(_localctx, 6, AudioScoreParser::RuleStatement);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -332,23 +458,46 @@ AudioScoreParser::StatementContext* AudioScoreParser::statement() {
     exitRule();
   });
   try {
-    setState(31);
+    setState(51);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case AudioScoreParser::NOTE: {
         enterOuterAlt(_localctx, 1);
-        setState(25);
+        setState(40);
         noteStmt();
-        setState(26);
+        setState(41);
         match(AudioScoreParser::T__1);
         break;
       }
 
-      case AudioScoreParser::T__2: {
+      case AudioScoreParser::T__7: {
         enterOuterAlt(_localctx, 2);
-        setState(28);
+        setState(43);
         restStmt();
-        setState(29);
+        setState(44);
+        match(AudioScoreParser::T__1);
+        break;
+      }
+
+      case AudioScoreParser::T__0: {
+        enterOuterAlt(_localctx, 3);
+        setState(46);
+        tempoStmt();
+        break;
+      }
+
+      case AudioScoreParser::T__5: {
+        enterOuterAlt(_localctx, 4);
+        setState(47);
+        loopStmt();
+        break;
+      }
+
+      case AudioScoreParser::T__6: {
+        enterOuterAlt(_localctx, 5);
+        setState(48);
+        playStmt();
+        setState(49);
         match(AudioScoreParser::T__1);
         break;
       }
@@ -356,6 +505,156 @@ AudioScoreParser::StatementContext* AudioScoreParser::statement() {
     default:
       throw NoViableAltException(this);
     }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- LoopStmtContext ------------------------------------------------------------------
+
+AudioScoreParser::LoopStmtContext::LoopStmtContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* AudioScoreParser::LoopStmtContext::INT() {
+  return getToken(AudioScoreParser::INT, 0);
+}
+
+std::vector<AudioScoreParser::StatementContext *> AudioScoreParser::LoopStmtContext::statement() {
+  return getRuleContexts<AudioScoreParser::StatementContext>();
+}
+
+AudioScoreParser::StatementContext* AudioScoreParser::LoopStmtContext::statement(size_t i) {
+  return getRuleContext<AudioScoreParser::StatementContext>(i);
+}
+
+
+size_t AudioScoreParser::LoopStmtContext::getRuleIndex() const {
+  return AudioScoreParser::RuleLoopStmt;
+}
+
+void AudioScoreParser::LoopStmtContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<AudioScoreListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterLoopStmt(this);
+}
+
+void AudioScoreParser::LoopStmtContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<AudioScoreListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitLoopStmt(this);
+}
+
+
+std::any AudioScoreParser::LoopStmtContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<AudioScoreVisitor*>(visitor))
+    return parserVisitor->visitLoopStmt(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+AudioScoreParser::LoopStmtContext* AudioScoreParser::loopStmt() {
+  LoopStmtContext *_localctx = _tracker.createInstance<LoopStmtContext>(_ctx, getState());
+  enterRule(_localctx, 8, AudioScoreParser::RuleLoopStmt);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(53);
+    match(AudioScoreParser::T__5);
+    setState(54);
+    match(AudioScoreParser::INT);
+    setState(55);
+    match(AudioScoreParser::T__3);
+    setState(59);
+    _errHandler->sync(this);
+    _la = _input->LA(1);
+    while ((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 962) != 0)) {
+      setState(56);
+      statement();
+      setState(61);
+      _errHandler->sync(this);
+      _la = _input->LA(1);
+    }
+    setState(62);
+    match(AudioScoreParser::T__4);
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- PlayStmtContext ------------------------------------------------------------------
+
+AudioScoreParser::PlayStmtContext::PlayStmtContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* AudioScoreParser::PlayStmtContext::ID() {
+  return getToken(AudioScoreParser::ID, 0);
+}
+
+
+size_t AudioScoreParser::PlayStmtContext::getRuleIndex() const {
+  return AudioScoreParser::RulePlayStmt;
+}
+
+void AudioScoreParser::PlayStmtContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<AudioScoreListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterPlayStmt(this);
+}
+
+void AudioScoreParser::PlayStmtContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<AudioScoreListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitPlayStmt(this);
+}
+
+
+std::any AudioScoreParser::PlayStmtContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<AudioScoreVisitor*>(visitor))
+    return parserVisitor->visitPlayStmt(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+AudioScoreParser::PlayStmtContext* AudioScoreParser::playStmt() {
+  PlayStmtContext *_localctx = _tracker.createInstance<PlayStmtContext>(_ctx, getState());
+  enterRule(_localctx, 10, AudioScoreParser::RulePlayStmt);
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(64);
+    match(AudioScoreParser::T__6);
+    setState(65);
+    match(AudioScoreParser::ID);
    
   }
   catch (RecognitionException &e) {
@@ -377,8 +676,8 @@ tree::TerminalNode* AudioScoreParser::NoteStmtContext::NOTE() {
   return getToken(AudioScoreParser::NOTE, 0);
 }
 
-tree::TerminalNode* AudioScoreParser::NoteStmtContext::OCTAVE() {
-  return getToken(AudioScoreParser::OCTAVE, 0);
+tree::TerminalNode* AudioScoreParser::NoteStmtContext::INT() {
+  return getToken(AudioScoreParser::INT, 0);
 }
 
 tree::TerminalNode* AudioScoreParser::NoteStmtContext::DUR() {
@@ -412,7 +711,7 @@ std::any AudioScoreParser::NoteStmtContext::accept(tree::ParseTreeVisitor *visit
 
 AudioScoreParser::NoteStmtContext* AudioScoreParser::noteStmt() {
   NoteStmtContext *_localctx = _tracker.createInstance<NoteStmtContext>(_ctx, getState());
-  enterRule(_localctx, 6, AudioScoreParser::RuleNoteStmt);
+  enterRule(_localctx, 12, AudioScoreParser::RuleNoteStmt);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -423,11 +722,11 @@ AudioScoreParser::NoteStmtContext* AudioScoreParser::noteStmt() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(33);
+    setState(67);
     match(AudioScoreParser::NOTE);
-    setState(34);
-    match(AudioScoreParser::OCTAVE);
-    setState(35);
+    setState(68);
+    match(AudioScoreParser::INT);
+    setState(69);
     match(AudioScoreParser::DUR);
    
   }
@@ -477,7 +776,7 @@ std::any AudioScoreParser::RestStmtContext::accept(tree::ParseTreeVisitor *visit
 
 AudioScoreParser::RestStmtContext* AudioScoreParser::restStmt() {
   RestStmtContext *_localctx = _tracker.createInstance<RestStmtContext>(_ctx, getState());
-  enterRule(_localctx, 8, AudioScoreParser::RuleRestStmt);
+  enterRule(_localctx, 14, AudioScoreParser::RuleRestStmt);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -488,9 +787,9 @@ AudioScoreParser::RestStmtContext* AudioScoreParser::restStmt() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(37);
-    match(AudioScoreParser::T__2);
-    setState(38);
+    setState(71);
+    match(AudioScoreParser::T__7);
+    setState(72);
     match(AudioScoreParser::DUR);
    
   }
