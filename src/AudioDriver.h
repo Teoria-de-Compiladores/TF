@@ -157,16 +157,67 @@ public:
     // loopStmt: 'loop' INT '{' statement* '}'
     //Repite N veces el bloque de statements internos.
     antlrcpp::Any visitLoopStmt(AudioScoreParser::LoopStmtContext *ctx) override {
-        int times = std::stoi(ctx->INT()->getText());
+        using namespace llvm;
 
-        for (int i = 0; i < times; ++i) {
-            for (auto *stmt : ctx->statement()) {
-                visit(stmt);
-            }
+        int times = std::stoi(ctx->INT()->getText());
+        if (times <= 0) {
+            // Nada que hacer si loop 0 { ... }
+            return nullptr;
         }
+
+        Function *fn = builder_->GetInsertBlock()->getParent();
+        Type *i32Ty  = builder_->getInt32Ty();
+
+        // 1) Si aún no tengo contador, lo creo en el entry de main
+        if (!loopCounter_) {
+            IRBuilder<> entryBuilder(
+                &fn->getEntryBlock(),
+                fn->getEntryBlock().begin()
+            );
+            loopCounter_ = entryBuilder.CreateAlloca(i32Ty, nullptr, "i");
+        }
+
+        // 2) Crear bloques del loop
+        BasicBlock *loopHeaderBB = BasicBlock::Create(context_, "loop.header", fn);
+        BasicBlock *loopBodyBB   = BasicBlock::Create(context_, "loop.body",   fn);
+        BasicBlock *loopEndBB    = BasicBlock::Create(context_, "loop.end",    fn);
+
+        // 3) Inicializar i = 0 y saltar a loop.header
+        builder_->CreateStore(ConstantInt::get(i32Ty, 0), loopCounter_);
+        builder_->CreateBr(loopHeaderBB);
+
+        // 4) loop.header: cargar i, comparar con times
+        builder_->SetInsertPoint(loopHeaderBB);
+        Value *iVal   = builder_->CreateLoad(i32Ty, loopCounter_, "i");
+        Value *limit  = ConstantInt::get(i32Ty, times);
+        Value *cond   = builder_->CreateICmpSLT(iVal, limit, "loopcond");
+
+        builder_->CreateCondBr(cond, loopBodyBB, loopEndBB);
+
+        // 5) loop.body: ejecutar los statements del cuerpo
+        builder_->SetInsertPoint(loopBodyBB);
+
+        for (auto *stmt : ctx->statement()) {
+            visit(stmt);  // esto genera las llamadas a notas, rests, sub-loops, etc.
+        }
+
+        // i = i + 1
+        Value *next = builder_->CreateAdd(
+            iVal,
+            ConstantInt::get(i32Ty, 1),
+            "i.next"
+        );
+        builder_->CreateStore(next, loopCounter_);
+
+        // Volver al header
+        builder_->CreateBr(loopHeaderBB);
+
+        // 6) Al final, el "cursor" del builder queda en loop.end
+        builder_->SetInsertPoint(loopEndBB);
 
         return nullptr;
     }
+
 
     // noteStmt: NOTE INT DUR ;
     //Extrae los 3 tokens de la nota
@@ -282,6 +333,8 @@ private:
     llvm::Function *noteFn_;
     llvm::Function *restFn_;
     llvm::Function *mainFn_;
+
+    llvm::AllocaInst *loopCounter_ = nullptr;
 
     // Mapa de patterns: nombre → lista de statements de ese patrón
     std::unordered_map<std::string, std::vector<AudioScoreParser::StatementContext*>> patterns_;
