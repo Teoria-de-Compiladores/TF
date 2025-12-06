@@ -186,7 +186,7 @@ public:
         builder_->CreateStore(ConstantInt::get(i32Ty, 0), loopCounter_);
         builder_->CreateBr(loopHeaderBB);
 
-        // 4) loop.header: cargar i, comparar con times
+        // 4) loop.header: cargar i, comparar con times 
         builder_->SetInsertPoint(loopHeaderBB);
         Value *iVal   = builder_->CreateLoad(i32Ty, loopCounter_, "i");
         Value *limit  = ConstantInt::get(i32Ty, times);
