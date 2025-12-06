@@ -22,8 +22,8 @@ compile_commands.json
 *.class
 
 # Archivos de audio generados
-*.wav
-*.aud
+# *.wav
+# *.aud
 
 # Archivos temporales de VSCode
 .vscode/

@@ -1,0 +1,57 @@
+tempo 128;
+
+pattern beat {
+    C2 e;
+    rest e;
+    C2 e;
+    rest e;
+}
+
+pattern bass {
+    C3 q;
+    C3 q;
+    G2 q;
+    G2 q;
+}
+
+pattern lead {
+    E4 e; G4 e; A4 e; G4 e;
+    E4 e; G4 e; B4 e; A4 e;
+}
+
+pattern build {
+    C4 e;
+    D4 e;
+    E4 e;
+    G4 e;
+}
+
+loop 4 {
+    play beat;
+    play bass;
+}
+
+tempo 132;
+
+loop 2 {
+    play beat;
+    play build;
+    rest e;
+    rest e;
+}
+
+tempo 138;
+
+loop 4 {
+    play beat;
+    play bass;
+    play lead;
+}
+
+tempo 128;
+
+loop 2 {
+    play beat;
+}
+
+rest h;
